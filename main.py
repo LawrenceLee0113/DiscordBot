@@ -1,12 +1,13 @@
 #設定非必要不要動
-#若被速率限制error429 則在shell打kill 1
-
 from platform import java_ver
 import discord
 from discord.ext import commands
 import json
-import random,os,asyncio
+import random,asyncio
 import time
+
+
+
 
 with open("settings.json","r",encoding="utf8") as jfile:
     jdata = json.load(jfile)
