@@ -6,6 +6,10 @@ import json
 import random,asyncio
 import time
 
+from class_list import Classes
+
+#課表呼叫
+class_list = Classes()
 
 
 
@@ -99,5 +103,18 @@ async def clean(ctx,num:int):
     await ctx.send("清理完成")
     time.sleep(5)
     await ctx.channel.purge(limit=1)
+
+#友站連結
+@bot.command()
+async def fooder(ctx):
+    await ctx.send("https://fooder.csiejar.xyz")
+
+@bot.command()
+async def pop(ctx):
+    await ctx.send("https://pop.csiejar.xyz")
+
+@bot.command()
+async def web(ctx):
+    await ctx.send("https://csiejar.xzy")
 
 bot.run(jdata["TOKEN"])
