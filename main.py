@@ -6,6 +6,7 @@ import json
 import random,asyncio
 import time
 
+
 from class_list import Classes
 
 #課表呼叫
