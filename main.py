@@ -6,7 +6,7 @@ import json
 import random,asyncio
 import time
 import re
-
+import os
 
 with open("settings.json","r",encoding="utf8") as jfile:
     jdata = json.load(jfile)
@@ -107,7 +107,7 @@ async def 上課(ctx):
 @bot.command()
 async def vote(ctx,*,cho):
     list = re.compile(r'\S+').findall(cho)
-    emoji_num = ['0️⃣','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟']
+    emoji_num = ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟']
     
     if len(list) > 1:
         embed = discord.Embed(title = list[0],color=0x0011ff)
@@ -131,5 +131,5 @@ async def vote(ctx,*,cho):
 
     await ctx.message.delete()
     
-  
-bot.run(jdata["TOKEN"])
+my_secret = os.environ['TOKEN']
+bot.run(my_secret)
