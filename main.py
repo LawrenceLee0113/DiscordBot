@@ -17,7 +17,7 @@ intents.members = True
 
 bot = commands.Bot(command_prefix="!",intents = intents)
 
-
+bot.remove_command("help")
 
 #terminal顯示上線
 @bot.event
@@ -25,7 +25,9 @@ async def on_ready():
     print(f">>機器人: {bot.user} 已上線<<")
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='為資工一甲效勞中'))
     channel = bot.get_channel(jdata["loginchannel"])
-    await channel.send(f">>機器人: {bot.user} 已上線<<")
+    await channel.send(f">><@426342549696020480>機器人: {bot.user} 已上線<<")
+    time.sleep(5)
+    await channel.purge(limit=1)
 #加入訊息
 @bot.event
 async def on_member_join(member):
@@ -103,9 +105,14 @@ async def clean(ctx,num:int):
 async def 上課(ctx):
   await ctx.send("@everyone 你各位上課了")
 
+@bot.command()
+async def help(ctx):
+    await ctx.send(jdata["help"])
+
 #vote feature
 @bot.command()
 async def vote(ctx,*,cho):
+
     list = re.compile(r'\S+').findall(cho)
     emoji_num = ['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟']
     
@@ -131,5 +138,20 @@ async def vote(ctx,*,cho):
 
     await ctx.message.delete()
     
+#友站連結
+@bot.command()
+async def fooder(ctx):
+    await ctx.send("https://fooder.csiejar.xyz")
+
+@bot.command()
+async def pop(ctx):
+    await ctx.send("https://pop.csiejar.xyz")
+
+@bot.command()
+async def web(ctx):
+    await ctx.send("https://csiejar.xzy")
+
+
+
 my_secret = os.environ['TOKEN']
 bot.run(my_secret)
